@@ -2,18 +2,22 @@ CC       = gcc
 RM       = rm
 CCFLAGS  = -Wall -Wextra -g
 LDFLAGS  = -lcurses -lm
-EXEC     = main.o headers/fonction.o src/battleship.o src/fonction.c
+REP_SRC  = ./src/
+REP_HEAD = ./headers/
+REP_TEST = ./test/
+NAME     = battleship
+EXEC     = main.o $(REP_HEAD)fonction.o $(REP_SRC)battleship.o $(REP_SRC)fonction.o
 
-battleship : $(LDFLAGS) $(EXEC)
-	$(CC) main.c -o battleship $(LDFLAGS) -g
+$(NAME) : $(LDFLAGS) $(EXEC)
+	$(CC) main.c -o $(NAME) $(LDFLAGS) -g
 
-headers/fonction.o : fonction.h
+$(REP_HEAD)fonction.o : $(REP_HEAD)fonction.h
 	$(CC) -g $(CCFLAGS) -c $<
 
-src/battleship.o : battleship.c
+$(REP_SRC)battleship.o : $(REP_SRC)battleship.c
 	$(CC) -g $(CCFLAGS) -c $<
 
-src/fonction.o : fonction.c
+$(REP_SRC)fonction.o : $(REP_SRC)fonction.c
 	$(CC) -g $(CCFLAGS) -c $<
 
 clean :
