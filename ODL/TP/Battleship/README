@@ -1,0 +1,11 @@
+Battleship the game
+
+Student project in language C about the traditionnal battleship game.
+In it you can play the battleship traditionnal game with some modifications.
+New rules was added in it like the movements of ships every turn. 
+
+Installation :
+
+    At the project's root run "make" in your terminal
+    And launch the game with "./battleship"
+    And play !

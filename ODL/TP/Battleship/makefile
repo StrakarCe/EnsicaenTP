@@ -14,26 +14,27 @@
 
 CC       = gcc
 RM       = rm
-CCFLAGS  = -Wall -Wextra -g
+CCFLAGS  = -Wall
 LDFLAGS  = -lcurses -lm
-REP_SRC  = ./src/
-REP_HEAD = ./headers/
-REP_TEST = ./test/
-REP_OBJ  = ./obj/
+REP_SRC  = src/
+REP_HEAD = include/
+REP_TEST = test/
+REP_OBJ  = obj/
+REP_BIN  = bin/
 NAME     = battleship
-EXEC     = $(REP_OBJ)main.o $(REP_OBJ)fonction.o $(REP_OBJ)$(NAME).o $(REP_OBJ)fonction.o
+EXEC     = $(REP_OBJ)main.o $(REP_OBJ)fonction.o $(REP_OBJ)$(NAME).o
 
 $(NAME) : $(LDFLAGS) $(EXEC)
-	$(CC) main.c -o $(NAME) $(LDFLAGS) -g
+	$(CC) $(EXEC) -o $(REP_BIN)$(NAME) $(LDFLAGS) -g
 
-$(REP_OBJ)fonction.o : $(REP_HEAD)fonction.h
-	$(CC) -g $(CCFLAGS) -c $<
+$(REP_OBJ)main.o : main.c
+	$(CC) $(CCFLAGS) -c $<
 
 $(REP_OBJ)$(NAME).o : $(REP_SRC)$(NAME).c
-	$(CC) -g $(CCFLAGS) -c $<
+	$(CC) $(CCFLAGS) -c $<
 
 $(REP_OBJ)fonction.o : $(REP_SRC)fonction.c
-	$(CC) -g $(CCFLAGS) -c $<
+	$(CC) $(CCFLAGS) -c $<
 
 clean :
 	-@$(RM) $(REP_OBJ)*.o

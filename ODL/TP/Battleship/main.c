@@ -15,7 +15,10 @@
   * @bug the list of known bugs.
   */
 
-int main(int argc, char const *argv[]) {
+#include <stdio.h>
+#include "include/fonction.h"
+
+int main() {
     /* code */
     return 0;
 }
